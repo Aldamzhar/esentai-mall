@@ -14,7 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        DB::table('data_rows')->truncate();
+        DB::table('data_types')->truncate();
         $this->call(AboutMallTableSeeder::class);
         $this->call(ContactsTableSeeder::class);
         $this->call(EntertainmentsTableSeeder::class);
@@ -30,6 +32,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PermissionsTableSeeder::class);
         $this->call(PermissionRoleTableSeeder::class);
         $this->call(SettingsTableSeeder::class);
-
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
